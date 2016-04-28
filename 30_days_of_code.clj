@@ -1,7 +1,8 @@
-; Day 0, Hello, World.
+                                        ; Day 0, Hello, World.
+
 (println (str "Hello, World.\n" (read-line)))
 
-; Day 2, Operators
+                                        ; Day 2, Operators
 
 (let [x (Float/parseFloat (read-line))
       y (Float/parseFloat (read-line))
@@ -12,7 +13,8 @@
         "dollars."
         ))
 
-; Day 3, Conditional statements
+                                        ; Day 3, Conditional statements
+
 (use '[clojure.string :only (split triml)])
 (
   let [
@@ -25,7 +27,7 @@
     (if (<= 2 N 5) (println "Not Weird") (if (<= 6 N 20) (println "Weird") (if (> N 20) (println "Not Weird"))))))
 )
 
-; Day 5, Loops
+                                        ; Day 5, Loops
 
 (use '[clojure.string :only (split triml)])
 (
@@ -36,12 +38,8 @@
   (doseq [x (range 1 11)] (println (str N " x " x " = " (* N x))))
 )
 
+                                        ;Day 6 Review
 
-
-;Day 6 Review
-
-; Enter your code here. Read input from STDIN. Print output to STDOUT
-;
 (defn splitString [s]
   (println
     (str
@@ -56,3 +54,43 @@
   ]
   (doseq [x (range 1 (+ N 1))] (splitString (read-line)))
 )
+
+                                        ;Day 7
+
+(use '[clojure.string :only (split triml)])
+
+(
+  let [
+    n_t (read-line)
+    n (Integer/parseInt n_t)
+  ]
+  (let [
+      arr_temp (read-line)
+      arr_t (split arr_temp #"\s+")
+      arr (map #(Integer/parseInt %) arr_t)
+    ]
+    (println
+      (apply str
+        (interpose
+          " "
+          (reverse arr))))))
+
+                                        ;Day 9, Recursion
+
+(defn factorial [n]
+  (if (or (= n 0) (= n 1))
+    1
+    (* n (factorial (- n 1)))))
+
+(println (factorial (Integer/parseInt (read-line))))
+
+                                        ; Day 10, Binary Numbers
+
+(use '[clojure.string :only (split triml)])
+
+(
+ let [
+      n_t (read-line)
+      n (Integer/parseInt n_t)
+      ]
+ (println (str (Integer/toBinaryString n))))
