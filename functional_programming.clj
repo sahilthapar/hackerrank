@@ -76,3 +76,14 @@
              [(- (count s2) l) (subs s2 l)]]]
 
     (println (first x) (second x))))
+
+
+
+(defn stringReduce [[f & r] s]
+  (if (nil? f)
+    s
+    (if (some #(= f %) s)
+      (stringReduce r s)
+      (stringReduce r (conj s f)))))
+
+(print (apply str (stringReduce (read-line) [])))
